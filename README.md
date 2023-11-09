@@ -1,2 +1,1 @@
-# OTUS_QA_PYTHON_LESSON_12
-Selenium+Python tests
+Домашнее задание к уроку 12 - Ожидания элементов в Selenium.
