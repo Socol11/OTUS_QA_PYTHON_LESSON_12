@@ -5,6 +5,10 @@ import random
 
 
 def test_add_product_into_cart(browser, url):
+    """This test adds a randomly selected item
+    from the home page to the cart and then the test
+    check if the product has been added to the cart"""
+
     browser.get(url)
     wait = WebDriverWait(browser, 5)
 
@@ -20,7 +24,7 @@ def test_add_product_into_cart(browser, url):
     product_title = random_product_layout.find_element(By.TAG_NAME, "h4").text
     product_price = random_product_layout.find_element(
         By.CSS_SELECTOR, "p.price"
-    ).text.splitlines()[0]   # Строка содержит доп. символы и имеет вид '$123.20\nEx Tax: $101.00', поэтому делаем split
+    ).text.splitlines()[0]  # Строка содержит доп. символы и имеет вид '$123.20\nEx Tax: $101.00', поэтому делаем split
 
     # Добавляем выбранный товар в корзину кликом по кнопке Add to cart
     random_product_layout.find_element(By.CSS_SELECTOR, "span.hidden-md").click()

@@ -1,3 +1,5 @@
+"""Check elements of a product page"""
+
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -5,15 +7,17 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 def test_thumbnails_presence(browser, url):
+    """This test checks if a product thumbnail is available"""
     browser.get(url + '/iphone')
     wait = WebDriverWait(browser, 5)
     try:
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "ul.thumbnails")))
     except TimeoutException:
-        raise AssertionError(f"Слайдер с продуктом отсутствует на странице!")
+        raise AssertionError(f"Миниатюра товара отсутствует на странице!")
 
 
 def test_h1_title_presence(browser, url):
+    """This test checks if the content of the H1 tag matches the product name"""
     browser.get(url + '/iphone')
     wait = WebDriverWait(browser, 5)
     try:
@@ -23,6 +27,7 @@ def test_h1_title_presence(browser, url):
 
 
 def test_brand_info_presence(browser, url):
+    """This test checks if the content of the brand name element matches the product brand"""
     browser.get(url + '/iphone')
     wait = WebDriverWait(browser, 5)
     try:
@@ -33,6 +38,7 @@ def test_brand_info_presence(browser, url):
 
 
 def test_price_info_presence(browser, url):
+    """This test checks if the product price info from H2 tag matches the real product price"""
     browser.get(url + '/iphone')
     wait = WebDriverWait(browser, 5)
     try:
@@ -43,6 +49,8 @@ def test_price_info_presence(browser, url):
 
 
 def test_input_quantity_presence(browser, url):
+    """This test checks if the element for selecting the quantity
+    of the product is present on the page"""
     browser.get(url + '/iphone')
     wait = WebDriverWait(browser, 5)
     try:
@@ -52,6 +60,7 @@ def test_input_quantity_presence(browser, url):
 
 
 def test_add_to_cart_button_presence(browser, url):
+    """This test check if the 'Add to cart' button is present on the page"""
     browser.get(url + '/iphone')
     wait = WebDriverWait(browser, 5)
     try:
