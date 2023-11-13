@@ -5,7 +5,7 @@ services:
     image: 'phpmyadmin/phpmyadmin:latest'
     environment:
       - PMA_HOST=mariadb
-      - PMA_PORT=3306
+      - PMA_PORT=3506
       - PMA_USER=bn_opencart
     ports:
       - '8888:80'
@@ -19,7 +19,7 @@ services:
     volumes:
       - 'mariadb_data:/bitnami/mariadb'
     ports:
-      - '3306:3306'
+      - '3506:3506'
 
   opencart:
     image: docker.io/bitnami/opencart:3
