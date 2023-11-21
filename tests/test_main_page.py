@@ -13,6 +13,11 @@ class TestMainPage:
         main_page = MainPage(browser)
         main_page.get_slider(wait)
 
+    def test_presence_of_slider_pagination(self, browser, url, wait=5):
+        browser.get(url)
+        main_page = MainPage(browser)
+        main_page.get_slider_pagination(wait)
+
 
 # def test_presence_of_a_slider(browser, url):
 #     browser.get(url)
@@ -23,13 +28,13 @@ class TestMainPage:
 #         raise AssertionError(f"Слайдер отсутствует на странице")
 
 
-def test_presence_of_slider_pagination(browser, url):
-    browser.get(url)
-    wait = WebDriverWait(browser, 5)
-    try:
-        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".swiper-pagination")))
-    except TimeoutException:
-        raise AssertionError(f"Пагинация слайдера отсутствует на странице")
+# def test_presence_of_slider_pagination(browser, url):
+#     browser.get(url)
+#     wait = WebDriverWait(browser, 5)
+#     try:
+#         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".swiper-pagination")))
+#     except TimeoutException:
+#         raise AssertionError(f"Пагинация слайдера отсутствует на странице")
 
 
 def test_presence_of_product_layout(browser, url):
