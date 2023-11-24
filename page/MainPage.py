@@ -15,18 +15,18 @@ class MainPage(BasePage):
 
     def get_slider(self, wait):
         try:
-            self.get_element(MainPage.SLIDER, wait)
+            self.get_element(self.SLIDER, wait)
         except TimeoutException:
             raise AssertionError(f"Слайдер отсутствует на странице")
 
     def get_slider_pagination(self, wait):
         try:
-            self.get_element(MainPage.SLIDER_PAGINATION, wait)
+            self.get_element(self.SLIDER_PAGINATION, wait)
         except TimeoutException:
             raise AssertionError(f"Пагинация слайдера отсутствует на странице")
 
     def get_product_layout(self, wait):
-        product_layout_list = self.get_elements(MainPage.PRODUCT_LAYOUT, wait)
+        product_layout_list = self.get_elements(self.PRODUCT_LAYOUT, wait)
         try:
             assert len(product_layout_list) > 0
         except TimeoutException:
@@ -34,17 +34,17 @@ class MainPage(BasePage):
 
     def get_carousel(self, wait):
         try:
-            self.get_element(MainPage.CAROUSEL, wait)
+            self.get_element(self.CAROUSEL, wait)
         except TimeoutException:
             raise AssertionError(f"Карусель отсутствует на странице")
 
     def get_buttons_in_product_layout(self, wait):
-        product_layout_list = self.get_elements(MainPage.PRODUCT_LAYOUT, wait)
+        product_layout_list = self.get_elements(self.PRODUCT_LAYOUT, wait)
         # Выбираем случайное число из диапазона от 0 до количества продуктов
         number = random.randint(0, len(product_layout_list) - 1)
         # Выбираем случайный элемент из имеющихся
-        random_product_layout = self.get_elements(MainPage.PRODUCT_LAYOUT, wait)[number]
+        random_product_layout = self.get_elements(self.PRODUCT_LAYOUT, wait)[number]
         try:
-            random_product_layout.find_element(*MainPage.BUTTON_GROUP)
+            random_product_layout.find_element(*self.BUTTON_GROUP)
         except TimeoutException:
             raise AssertionError(f"Нет группы кнопок в product layout")
