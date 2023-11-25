@@ -33,8 +33,6 @@ class TestMainPage:
         main_page = MainPage(browser)
         main_page.get_buttons_in_product_layout(wait)
 
-
-
 # def test_presence_of_a_slider(browser, url):
 #     browser.get(url)
 #     wait = WebDriverWait(browser, 5)
