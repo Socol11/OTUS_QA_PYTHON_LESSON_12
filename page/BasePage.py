@@ -1,8 +1,3 @@
-"""
-Класс абстрактной базовой страницы, от которого можно наследовать другие классы сраниц для поиска элементов
-"""
-
-
 from selenium.webdriver.common.by import By
 
 from selenium.common.exceptions import TimeoutException, WebDriverException
