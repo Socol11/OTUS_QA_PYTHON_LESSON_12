@@ -2,7 +2,6 @@ import random
 from page.BasePage import BasePage
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support import expected_conditions as EC
 
 
 class MainPage(BasePage):
