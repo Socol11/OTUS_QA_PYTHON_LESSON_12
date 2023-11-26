@@ -5,6 +5,8 @@ from selenium.common.exceptions import TimeoutException
 
 
 class MainPage(BasePage):
+    """This class gets elements from tne main page"""
+
     SLIDER = (By.CSS_SELECTOR, ".slideshow")
     SLIDER_PAGINATION = (By.CSS_SELECTOR, ".swiper-pagination")
     PRODUCT_LAYOUT = (By.CSS_SELECTOR, ".product-layout")
