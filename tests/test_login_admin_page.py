@@ -37,7 +37,7 @@ class TestLoginAdminPage:
         """This test checks if possible to enter to admin panel from the /admin page"""
         browser.get(url + self.PAGE)
         admin_page = AdminPage(browser)
-        admin_page.enter_admin_page(wait, url, username, password)
+        admin_page.enter_admin_page(wait, username, password)
 
 # def test_user_name_field_presence(browser, url):
 #     browser.get(url + '/admin')
