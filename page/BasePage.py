@@ -1,6 +1,4 @@
-from selenium.webdriver.common.by import By
-
-from selenium.common.exceptions import TimeoutException, WebDriverException
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -15,7 +13,7 @@ class BasePage:
 
     def get_elements(self, locator: tuple, wait: int):
         try:
-            return WebDriverWait(self.browser, 5).until(EC.presence_of_all_elements_located(locator))
+            return WebDriverWait(self.browser, wait).until(EC.presence_of_all_elements_located(locator))
         except TimeoutException:
             raise AssertionError(f"Didn't wait for the {locator} elements to be visible!")
 
