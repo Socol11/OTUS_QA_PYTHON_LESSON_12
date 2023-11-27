@@ -37,7 +37,7 @@ class AdminPage(BasePage):
         except TimeoutException:
             raise AssertionError(f"Ссылка на восстановление пароля отсутствует на странице!")
 
-    def enter_admin_page(self, wait, url, username, password):
+    def enter_admin_page(self, wait, username, password):
         try:
             self.get_element(self.USER_NAME_FIELD, wait).send_keys(username)
             self.get_element(self.PASSWORD_FIELD, wait).send_keys(password)
