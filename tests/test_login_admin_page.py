@@ -2,6 +2,8 @@ from page.AdminPage import AdminPage
 
 
 class TestLoginAdminPage:
+    """Тестируем страницу входа в панель администратора"""
+
     PAGE = '/admin'
     WAIT = 5
     USERNAME = 'user'

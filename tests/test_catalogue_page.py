@@ -1,16 +1,9 @@
-import random
-import time
-
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
-
 from page.CataloguePage import CataloguePage
 
 
 class TestCataloguePage:
+    """Тестируем разные страницы каталога товаров"""
+
     WAIT = 5
     DESKTOPS_PAGE = "/desktops"
     MP3_PAGE = "/mp3-players"

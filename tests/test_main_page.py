@@ -2,6 +2,8 @@ from page.MainPage import MainPage
 
 
 class TestMainPage:
+    """Тестируем главную страницу сайта"""
+
     WAIT = 5
 
     def test_presence_of_a_slider(self, browser, url, wait=WAIT):

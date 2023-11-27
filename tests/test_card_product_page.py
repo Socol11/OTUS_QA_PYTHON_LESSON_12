@@ -1,9 +1,9 @@
-"""Check elements of a product page"""
-
 from page.ProductPage import ProductPage
 
 
 class TestCardProductPage:
+    """Тестируем карточку товара"""
+
     PAGE = '/iphone'
     WAIT = 5
     NAME = 'iPhone'
