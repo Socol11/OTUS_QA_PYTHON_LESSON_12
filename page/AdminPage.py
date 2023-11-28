@@ -10,6 +10,8 @@ class AdminPage(BasePage):
     PASSWORD_FIELD = (By.CSS_SELECTOR, "input[id='input-password']")
     LOGIN_BUTTON = (By.CSS_SELECTOR, "button.btn-primary")
     H1_TAG = (By.TAG_NAME, "h1")
+    LOGOUT = (By.LINK_TEXT, "Logout")
+
 
     def get_user_name_field(self, wait):
         try:
@@ -48,3 +50,12 @@ class AdminPage(BasePage):
 
         except TimeoutException:
             raise AssertionError(f"Вход в панель управления не удался!")
+
+    def quit_admin_page(self, wait):
+        try:
+            self.get_element(self.LOGOUT, wait).click()
+            h1_header_unlog = self.get_element(self.H1_TAG, wait).text
+            assert h1_header_unlog == "Please enter your login details."
+
+        except TimeoutException:
+            raise AssertionError(f"Разлогиниться не удалось!")

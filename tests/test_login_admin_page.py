@@ -34,7 +34,7 @@ class TestLoginAdminPage:
         admin_page.get_forgotten_password_link(wait, url)
 
     def test_enter_admin_page(self, browser, url, wait=WAIT, username=USERNAME, password=PASSWORD):
-        """This test checks if possible to enter to admin panel from the /admin page"""
+        """This test checks if it possible to enter to admin panel from the /admin page"""
         browser.get(url + self.PAGE)
         admin_page = AdminPage(browser)
         admin_page.enter_admin_page(wait, username, password)
