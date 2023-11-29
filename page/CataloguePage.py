@@ -15,6 +15,11 @@ class CataloguePage(BasePage):
     BTN_GROUP = (By.CSS_SELECTOR, ".btn-group")
     SORT_BY_DROPDOWN = (By.XPATH, "//*[@id='content']/div[3]/div[3]/div/label")
     LIMIT_DROPDOWN = (By.XPATH, "//*[@id='content']/div[1]/div[4]/div/label")
+    PRODUCT_LAYOUT = (By.CSS_SELECTOR, ".product-layout")
+    PRODUCT_CURRENCY_SYMBOL = (By.CSS_SELECTOR, "p.price")
+    CURRENCY_DROPDOWN_TOGGLE = (By.CSS_SELECTOR, "button.dropdown-toggle")
+    CURRENCY_SELECT_EUR = (By.CSS_SELECTOR, "button.currency-select[name='EUR']")
+    CURRENCY_SELECT_GBP = (By.CSS_SELECTOR, "button.currency-select[name='GBP']")
 
     def get_navbar_elements_list(self, wait):
         """Gets the list of li elements of menu"""
@@ -58,3 +63,30 @@ class CataloguePage(BasePage):
         """"""
         show = self.get_element(self.LIMIT_DROPDOWN, wait)
         return show
+
+    def get_random_product(self, wait, n=1):
+        # Собираем полный список всех товаров на главной странице
+        product_list = self.get_elements(self.PRODUCT_LAYOUT, wait)
+        number = random.randint(0, len(product_list) - n)
+        # Выбираем случайный товар из имеющихся
+        random_product = self.get_elements(self.PRODUCT_LAYOUT, wait)[number]
+        return random_product
+
+    def get_default_currency(self, wait):
+        # Выбираем случайный товар на странице
+        random_product = self.get_random_product(wait)
+        # Сохраняем символ валюты случайно выбранного товара в переменную
+        product_currency_symbol = random_product.find_element(*self.PRODUCT_CURRENCY_SYMBOL)
+        # Возвращаем символ валюты
+        return product_currency_symbol.text[0]
+
+    def change_currency(self, wait):
+        # Меняем валюту на EUR
+        self.get_element(self.CURRENCY_DROPDOWN_TOGGLE, wait).click()
+        self.get_element(self.CURRENCY_SELECT_EUR, wait).click()
+        # Выбираем случайный товар на странице
+        random_product = self.get_random_product(wait)
+        # Сохраняем символ валюты случайно выбранного товара в переменную
+        product_currency_symbol = random_product.find_element(*self.PRODUCT_CURRENCY_SYMBOL)
+        # Возвращаем символ валюты
+        return product_currency_symbol.text.splitlines()[0][-1]
