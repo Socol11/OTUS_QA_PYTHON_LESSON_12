@@ -11,31 +11,12 @@ class TestCataloguePage:
     LAPTOP_PAGE = "/laptop-notebook"
     TABLET_PAGE = "/tablet"
 
-    # def test_enter_random_catalogue_page_via_navbar(self, browser, url, wait=5):
-    #     """Проверяем возможность попасть в каталог через меню"""
-    #
-    #     browser.get(url)
-    #     main_page = CataloguePage(browser)
-    #
-    #     # Get the list of li elements of menu
-    #     navbar_elements_list = main_page.get_navbar_elements_list(wait)
-    #
-    #     # Choose the random li element
-    #     random_li_element = main_page.get_navbar_random_element(navbar_elements_list)
-    #     menu_link_title = random_li_element.text  # Save for assertion below
-    #
-    #     # Move the cursor to li_element
-    #     ActionChains(browser).move_to_element(random_li_element).perform()
-    #
-    #     time.sleep(1)
-    #     # Click on the appropriate link
-    #     try:
-    #         random_li_element.find_element(By.CLASS_NAME, 'see-all').click()
-    #     except NoSuchElementException:
-    #         random_li_element.click()
-    #
-    #     # Check the h2 header of opened catalogue page
-    #     assert wait.until(EC.visibility_of_element_located((By.TAG_NAME, 'h2'))).text == menu_link_title
+    def test_enter_random_catalogue_page_via_navbar(self, browser, url, wait=5):
+        """Проверяем возможность попасть в каталог через рандомно выбранный элемент меню"""
+        browser.get(url)
+        catalogue_page = CataloguePage(browser)
+        catalogue_h2_tag, li_element_text = catalogue_page.get_navbar_random_element(browser, wait)
+        assert catalogue_h2_tag.text == li_element_text
 
     def test_presence_of_catalogue_menu(self, browser, url, wait=5):
         """This test checks if the side catalogue menu is present on the /desktops page"""
