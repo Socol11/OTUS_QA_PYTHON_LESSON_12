@@ -6,7 +6,7 @@ from selenium.webdriver.firefox.options import Options as FFOptions
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 
 
-def pytest_addoption(parser):   # parser - встроенная фикстура pytest
+def pytest_addoption(parser):  # parser - встроенная фикстура pytest
     parser.addoption("--browser", default="chrome")
     parser.addoption("--maximize", action="store_true")
     parser.addoption("--headless", action="store_true")

@@ -12,7 +12,6 @@ class AdminPage(BasePage):
     H1_TAG = (By.TAG_NAME, "h1")
     LOGOUT = (By.LINK_TEXT, "Logout")
 
-
     def get_user_name_field(self, wait):
         try:
             self.get_element(self.USER_NAME_FIELD, wait)
