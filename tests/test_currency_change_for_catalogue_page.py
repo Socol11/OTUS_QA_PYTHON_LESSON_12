@@ -2,7 +2,7 @@ from page.CataloguePage import CataloguePage
 
 
 class TestCurrencyChange:
-    """Тестируем валюты на главной странице"""
+    """Тестируем валюты на странице каталога"""
 
     USD = "$"
     EUR = "€"
